@@ -1,23 +1,14 @@
 -- default config:
-require('peek').setup({
-  auto_load = true,         -- whether to automatically load preview when
-                            -- entering another markdown buffer
-  close_on_bdelete = true,  -- close preview window on buffer delete
-
-  syntax = true,            -- enable syntax highlighting, affects performance
-
-  theme = 'dark',           -- 'dark' or 'light'
-
-  update_on_change = true,
-
-  app = 'webview',          -- 'webview', 'browser', string or a table of strings
-                            -- explained below
-
-  filetype = { 'markdown' },-- list of filetypes to recognize as markdown
-
-  -- relevant if update_on_change is true
-  throttle_at = 200000,     -- start throttling when file exceeds this
-                            -- amount of bytes in size
-  throttle_time = 'auto',   -- minimum amount of time in milliseconds
-                            -- that has to pass before starting new render
+require('glow').setup({
+  glow_path = "", -- will be filled automatically with your glow bin in $PATH, if any
+  install_path = "C:/Users/ryancheung/.local/bin", -- default path for installing glow binary
+  border = "shadow", -- floating window border config
+  style = "dark",
+-- filled automatically with your current editor background, you can override using glow json style
+  pager = false,
+  width = 80,
+  height = 100,
+  width_ratio = 0.5, -- maximum width of the Glow window compared to the nvim window size (overrides `width`)
+  height_ratio = 1.0,
+               -- that has to pass before starting new render
 })

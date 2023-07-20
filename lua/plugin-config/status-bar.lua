@@ -1,13 +1,17 @@
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'iceberg_dark',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    theme = 'gruvbox_light',
+    component_separators = { left = '|', right = '|'},
+    -- component_separators = { left = '', right = ''},
+    -- section_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
     disabled_filetypes = {
       statusline = {},
       winbar = {},
-    },
+      'packer',
+      'NvimTree'
+},
     ignore_focus = {},
     always_divide_middle = true,
     globalstatus = false,
@@ -20,10 +24,14 @@ require('lualine').setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
+    lualine_c = {vim.cmd("echo fnamemodify(v:this_session, ':t')")},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_y = {{
+	    'filename',
+	    file_status = true,
+	    path = 2
+    }},
+    lualine_z = {'Progress','location'}
   },
   inactive_sections = {
     lualine_a = {},

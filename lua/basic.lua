@@ -1,7 +1,9 @@
 -- Disable swap file
-vim.o.backup = true
-vim.o.writebackup = true 
-vim.o.swapfile = true 
+vim.o.backup = false
+vim.o.writebackup = false 
+vim.o.swapfile = false
+-- set vim.opt.shellslash 
+vim.opt.shellslash._value = false 
 -- Hightlight current line
 vim.wo.cursorline = true
 -- Add Hybrid linue number showing
@@ -70,5 +72,4 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- For Undo Tree
 map('n', '<F6>', ':UndotreeToggle<CR>', opt)
 -- For Preview Markdown
-vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
-vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
+map('n', '<F4>', ':Glow<CR>',opt)

@@ -10,19 +10,29 @@ local header_art =
 
 ]]
 
+local function OpenNvimTree()
+		vim.cmd("NvimTreeOpen")
+end
+
 -- using the mini plugins
 require('mini.sessions').setup({
   -- Whether to read latest session if Neovim opened without file arguments
   autoread = false,
   -- Whether to write current session before quitting Neovim
-  autowrite = true,
+  autowrite = false,
   -- Directory where global sessions are stored (use `''` to disable)
-  directory =  'C:/Users/ryancheung/AppData/Local/nvim-data/session',
+  directory =  'C:/Users/ryancheung/AppData/Local/nvim-data/sessions',
   -- File for local session (use `''` to disable)
   file = 'Session.vim', -- 'Session.vim',
    -- Whether to force possibly harmful actions (meaning depends on function)
   force = { read = false, write = true, delete = false },
-
+    -- Hook functions for actions. Default `nil` means 'do nothing'.
+  hooks = {
+    -- Before successful action
+    pre = { read = nil, write = nil, delete = nil },
+    -- After successful action
+    post = { read = OpenNvimTree, write = nil, delete = nil },
+  },
 })
 
 local starter = require('mini.starter')
