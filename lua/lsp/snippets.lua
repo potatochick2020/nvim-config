@@ -379,7 +379,7 @@ ls.snippets = {
 		-- luasnip.config.setup() call to populate
 		-- TM_SELECTED_TEXT/SELECT_RAW/SELECT_DEDENT.
 		-- In this case: select a URL, hit Tab, then expand this snippet.
-		s("link_url", {
+		s("link_url", {.on_attach
 			t('<a href="'),
 			f(function(_, snip)
 				-- TM_SELECTED_TEXT is a table to account for multiline-selections.
