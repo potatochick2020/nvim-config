@@ -2,7 +2,7 @@ return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     -- color scheme
-    use {'nyoom-engineering/oxocarbon.nvim'}
+    use ({ 'projekt0n/github-nvim-theme' }) 
     -- nvim-tree
     use {
          'kyazdani42/nvim-tree.lua',
@@ -36,8 +36,8 @@ return require('packer').startup(function()
     use {'mg979/vim-visual-multi', branch = 'master'}
     -- Hightlight TODO    
     use 'sakshamgupta05/vim-todo-highlight'
-
-
+    -- Any jump 
+    use 'pechorin/any-jump.vim'
     -- LSP / Source COde / Syntax Highlight
     -- LSP config
     --Nvim LSP 客户端的快速入门配置
@@ -66,12 +66,12 @@ return require('packer').startup(function()
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
-use {
-    'nvim-treesitter/playground',
-    requires = { 'nvim-treesitter/nvim-treesitter' },
-    cmd = 'TSPlaygroundToggle',
-    config = function()
-        R'nvim-treesitter.configs'.setup({})
-    end,
-}
+    use {
+        'nvim-treesitter/playground',
+        requires = { 'nvim-treesitter/nvim-treesitter' },
+        cmd = 'TSPlaygroundToggle',
+        config = function()
+            R'nvim-treesitter.configs'.setup({})
+        end,
+    }
 end)

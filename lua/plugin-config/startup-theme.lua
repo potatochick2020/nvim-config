@@ -11,7 +11,7 @@ local header_art =
 ]]
 
 local function OpenNvimTree()
-		vim.cmd("NvimTreeOpen")
+	vim.cmd("NvimTreeOpen")
 end
 
 -- using the mini plugins
@@ -38,10 +38,7 @@ require('mini.sessions').setup({
 local starter = require('mini.starter')
 starter.setup({
   -- evaluate_single = true,
-  items = {
-    starter.sections.sessions(77, true),
-    starter.sections.builtin_actions(),
-  },
+  items = {''},
   content_hooks = {
     function(content)
       local blank_content_line = { { type = 'empty', string = '' } }
@@ -56,5 +53,6 @@ starter.setup({
     starter.gen_hook.aligning('center', 'center'),
   },
   header = header_art,
-  footer = '',
+  footer = '' ,
+  silent = false,
 })

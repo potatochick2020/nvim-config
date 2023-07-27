@@ -3,7 +3,7 @@ require 'nvim-treesitter.install'.compilers = {"zig"}
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.jsp = {
   install_info = {
-    url = "https://github.com/merico-dev/tree-sitter-jsp", -- local path or git repo
+    url = "C:/Users/ryancheung/Documents/github/tree-sitter-jsp", -- local path or git repo
     files = {"src/parser.c","src/scanner.cc"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
     -- optional entries:
     branch = "master", -- default branch in case of git repo if different from master
@@ -16,29 +16,13 @@ parser_config.jsp = {
 require'nvim-treesitter.configs'.setup {
   -- 安装 language parser
   -- :TSInstallInfo 命令查看支持的语言
-  ensure_installed = {"c","cpp","html", "css", "vim", "lua", "javascript", "typescript", "tsx","java"},
+  ensure_installed = {"c","cpp","html", "css", "vim", "lua", "javascript", "typescript", "tsx" , "java" , "jsp"},
   -- 启用代码高亮功能
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = false,
   },
-  -- 启用增量选择
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<CR>',
-      node_incremental = '<CR>',
-      node_decremental = '<BS>',
-      scope_incremental = '<TAB>',
-    }
-  },
-  -- 启用基于Treesitter的代码格式化(=) . NOTE: This is an experimental feature.
-  indent = {
-    enable = true
-  }
 }
 
-vim.treesitter.language.register('java', 'jsp')
 -- 开启 Folding
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'

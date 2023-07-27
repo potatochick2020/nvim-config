@@ -2,8 +2,6 @@
 vim.o.backup = false
 vim.o.writebackup = false 
 vim.o.swapfile = false
--- set vim.opt.shellslash 
-vim.opt.shellslash._value = false 
 -- Hightlight current line
 vim.wo.cursorline = true
 -- Add Hybrid linue number showing

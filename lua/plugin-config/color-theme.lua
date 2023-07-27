@@ -1,2 +1,2 @@
-vim.opt.background = "dark"
-vim.cmd("colorscheme oxocarbon")
+vim.cmd('colorscheme github_dark_high_contrast')
+vim.cmd("colorscheme github_dark_high_contrast")

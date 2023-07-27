@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["any-jump.vim"] = {
+    loaded = true,
+    path = "C:\\Users\\ryancheung\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\any-jump.vim",
+    url = "https://github.com/pechorin/any-jump.vim"
+  },
   ["auto-session"] = {
     loaded = true,
     path = "C:\\Users\\ryancheung\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\auto-session",
@@ -83,6 +88,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\ryancheung\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
+  },
+  ["github-nvim-theme"] = {
+    loaded = true,
+    path = "C:\\Users\\ryancheung\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\github-nvim-theme",
+    url = "https://github.com/projekt0n/github-nvim-theme"
   },
   ["glow.nvim"] = {
     loaded = true,
@@ -113,11 +123,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\ryancheung\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
-  },
-  ["oxocarbon.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\ryancheung\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\oxocarbon.nvim",
-    url = "https://github.com/nyoom-engineering/oxocarbon.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
