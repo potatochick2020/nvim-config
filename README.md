@@ -1,4 +1,5 @@
 # Install Packer
+# Install Life Grep
 
 # Install nvimtree + bufferline
 
@@ -35,3 +36,18 @@ Key mapping/ Common key usage until now:
 7. <F6> to navigate undo tree
 
 -----
+
+# Potential Issues
+## Get the most update version
+The version in debian-based apt repository is v0.6.1 which as at 2023 July, the most update version is v0.9.1 for stable release.
+
+## Case Sensitive File System
+Windows and Mac are Case - Insensitive file system by default, and Linux are Case - Sensitive, it might leads to some issues
+
+## Search where will be your path 
+In nvim normal mode type `:help vimrc-intro`
+
+It state the 2 default file path
+- ~/.config/nvim/init.vim         (Unix and OSX) 
+- ~/AppData/Local/nvim/init.vim   (Windows) 
+ 

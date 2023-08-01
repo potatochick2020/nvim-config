@@ -38,6 +38,14 @@ return require('packer').startup(function()
     use 'sakshamgupta05/vim-todo-highlight'
     -- Any jump 
     use 'pechorin/any-jump.vim'
+    -- hop https://github.com/phaazon/hop.nvim
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v2',
+        config = function()
+            require'hop'.setup {}
+        end
+    }
     -- LSP / Source COde / Syntax Highlight
     -- LSP config
     --Nvim LSP 客户端的快速入门配置

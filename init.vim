@@ -10,6 +10,7 @@ lua require('plugin-config/markdown-preview')
 lua require('plugin-config/auto-session')
 lua require('plugin-config/tree-sitter')
 lua require('plugin-config/status-bar')
+lua require('plugin-config/hop')
 "Basic LSP plugin
 " lua require('lsp/nvim-cmp')
 " lua require('lsp/snippets')
