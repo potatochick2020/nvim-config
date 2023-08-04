@@ -1,29 +1,9 @@
-# Install Packer
-# Install Life Grep
+# Dependency
 
-# Install nvimtree + bufferline
+[Packer](https://github.com/wbthomason/packer.nvim)
+[RIP grep](https://github.com/BurntSushi/ripgrep)
+Install nerd font in terminal 
 
-# Install a color theme 
-https://github.com/nyoom-engineering/oxocarbon.nvim
-# Install a status line + winbar 
-https://github.com/nvim-lualine/lualine.nvim
-
-# Install Wakatime
-
-# Install Start up theme
-https://github.com/echasnovski/mini.starter
-
-# Install telescope.nvim
-https://github.com/nvim-lua/plenary.nvim
-https://github.com/nvim-telescope/telescope.nvim
-# Install common tools for searching / these tools are used by telescope
-https://github.com/BurntSushi/ripgrep
-https://github.com/sharkdp/fd
-# Install nvim treesitter
-https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation
-# Install markdown-preview
-https://github.com/toppair/peek.nvim
-https://deno.land/
 -----
 Key mapping/ Common key usage until now:
 
@@ -34,7 +14,7 @@ Key mapping/ Common key usage until now:
 5. press a in normal mode to enter insert mode with cursor being after the current char
 6. space as leader key, space + fg/ff/fb/fh for telescope
 7. <F6> to navigate undo tree
-
+8. <F4> to navigate markdown preview, <ESC> to close
 -----
 
 # Potential Issues

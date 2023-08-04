@@ -46,29 +46,14 @@ return require('packer').startup(function()
             require'hop'.setup {}
         end
     }
-    -- LSP / Source COde / Syntax Highlight
-    -- LSP config
-    --Nvim LSP 客户端的快速入门配置
---    use "neovim/nvim-lspconfig"
---    --自动提示插件
---    use {
---      "hrsh7th/nvim-cmp",
---      requires = {
---        "hrsh7th/cmp-nvim-lsp", --neovim 内置 LSP 客户端的 nvim-cmp 源
---        "hrsh7th/cmp-buffer", --从buffer中智能提示
---        "hrsh7th/cmp-path" --自动提示硬盘上的文件
---      }
---    }
---    -- 代码段提示
---    use {
---      "L3MON4D3/LuaSnip",
---      requires = {
---        "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
---        "rafamadriz/friendly-snippets" --代码段合集
---      }
---    }
---    -- java语言支持jdtls扩展插件，在lsp基础上扩展了一些实用的内容
---    use "mfussenegger/nvim-jdtls"
+    -- LSP / Source Code / Syntax Highlight
+    use {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    }
+    -- LSP Better Ui
+    use {"glepnir/lspsaga.nvim"}
     -- nvim-tree-sitter
     use {
         'nvim-treesitter/nvim-treesitter',

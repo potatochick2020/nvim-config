@@ -40,11 +40,9 @@ map('i', '<C-j>', '<C-o>j', opt )
 map('i', '<C-w>', '<C-o>w', opt )
 map('i', '<C-b>', '<C-o>b', opt )
 map('i', '<C-x>', '<C-o>x', opt )
--- nvim tree toggle with F5
-map('n', '<F5>', ':NvimTreeToggle<CR>', opt)
 -- bufferline 左右Tab切换
-map("n", "<C-q>", ":BufferLineCyclePrev<CR>", opt)
-map("n", "<C-e>", ":BufferLineCycleNext<CR>", opt)
+map("n", "<A-q>", ":BufferLineCyclePrev<CR>", opt)
+map("n", "<A-e>", ":BufferLineCycleNext<CR>", opt)
 -- Split Screen
 map("n", "sv", ":vsp<CR>", opt)
 map("n", "sh", ":sp<CR>", opt)
@@ -67,7 +65,11 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
--- For Undo Tree
-map('n', '<F6>', ':UndotreeToggle<CR>', opt)
+-- For Symbol Outline
+map('n', '<F3>', ':Lspsaga outline<CR>',opt)
 -- For Preview Markdown
 map('n', '<F4>', ':Glow<CR>',opt)
+-- nvim tree toggle with F5
+map('n', '<F5>', ':NvimTreeToggle<CR>', opt)
+-- For Undo Tree
+map('n', '<F6>', ':UndotreeToggle<CR>', opt)
