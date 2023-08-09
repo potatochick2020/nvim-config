@@ -11,7 +11,7 @@ lua require('plugin-config/auto-session')
 lua require('plugin-config/tree-sitter')
 lua require('plugin-config/status-bar')
 lua require('plugin-config/hop')
-lua require('plugin-config/symbol-outline')
+lua require('plugin-config/vimwiki')
 
 "Basic LSP plugin
 lua require('lsp/lsp-basics')

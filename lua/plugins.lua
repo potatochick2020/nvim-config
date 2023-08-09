@@ -67,4 +67,13 @@ return require('packer').startup(function()
             R'nvim-treesitter.configs'.setup({})
         end,
     }
+    -- vimwiki
+    use {'vimwiki/vimwiki'}
+    -- pandoc
+    use {
+        'aspeddro/pandoc.nvim',
+        config = function()
+            require'pandoc'.setup()
+        end
+    }
 end)

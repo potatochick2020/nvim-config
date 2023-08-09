@@ -155,6 +155,12 @@ _G.packer_plugins = {
     path = "C:\\Users\\ryancheung\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["pandoc.nvim"] = {
+    config = { "\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vpandoc\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\ryancheung\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\pandoc.nvim",
+    url = "https://github.com/aspeddro/pandoc.nvim"
+  },
   playground = {
     commands = { "TSPlaygroundToggle" },
     config = { "\27LJ\2\nC\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\28nvim-treesitter.configs\6R\0" },
@@ -168,11 +174,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\ryancheung\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
-  },
-  ["symbols-outline.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\ryancheung\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\symbols-outline.nvim",
-    url = "https://github.com/simrat39/symbols-outline.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -203,10 +204,19 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\ryancheung\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-wakatime",
     url = "https://github.com/wakatime/vim-wakatime"
+  },
+  vimwiki = {
+    loaded = true,
+    path = "C:\\Users\\ryancheung\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vimwiki",
+    url = "https://github.com/vimwiki/vimwiki"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: pandoc.nvim
+time([[Config for pandoc.nvim]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vpandoc\frequire\0", "config", "pandoc.nvim")
+time([[Config for pandoc.nvim]], false)
 -- Config for: hop.nvim
 time([[Config for hop.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\bhop\frequire\0", "config", "hop.nvim")
