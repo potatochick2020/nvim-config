@@ -12,7 +12,7 @@ lua require('plugin-config/tree-sitter')
 lua require('plugin-config/status-bar')
 lua require('plugin-config/hop')
 lua require('plugin-config/vimwiki')
-
+lua require('plugin-config/fterm')
 "Basic LSP plugin
 lua require('lsp/lsp-basics')
 

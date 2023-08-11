@@ -69,6 +69,8 @@ return require('packer').startup(function()
     }
     -- vimwiki
     use {'vimwiki/vimwiki'}
+    -- Fterm
+    use "numToStr/FTerm.nvim"
     -- pandoc
     use {
         'aspeddro/pandoc.nvim',
