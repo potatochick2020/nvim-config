@@ -2,6 +2,10 @@ require'nvim-tree'.setup {
     -- 不显示 git 状态图标
     git = {
         enable = false
+    },
+    update_focused_file = {
+    	enable = true,
+	update_cwd = true,
     }
 }
  
@@ -13,3 +17,5 @@ require'nvim-tree'.setup {
      if layout[1] == "leaf" and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree" and layout[3] == nil then vim.cmd("quit") end
      end 
  }) 
+
+ vim.g.nvim_tree_respect_buf_cwd = 1
