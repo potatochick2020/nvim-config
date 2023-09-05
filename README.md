@@ -1,8 +1,8 @@
 # Dependency
 
+Install nerd font in terminal 
 [Packer](https://github.com/wbthomason/packer.nvim)
 [RIP grep](https://github.com/BurntSushi/ripgrep)
-Install nerd font in terminal 
 
 -----
 Key mapping/ Common key usage until now:
