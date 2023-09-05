@@ -1,8 +1,11 @@
 # Dependency
 
-Install nerd font in terminal 
-[Packer](https://github.com/wbthomason/packer.nvim)
-[RIP grep](https://github.com/BurntSushi/ripgrep)
+Install nerd font in terminal    
+[Packer](https://github.com/wbthomason/packer.nvim) -> Run `:PackerSync`
+[RIP grep](https://github.com/BurntSushi/ripgrep)    
+[Zig](https://ziglang.org)    
+[Gitui](https://github.com/extrawurst/gitui)    
+
 
 -----
 Key mapping/ Common key usage until now:
@@ -15,6 +18,8 @@ Key mapping/ Common key usage until now:
 6. space as leader key, space + fg/ff/fb/fh for telescope
 7. <F6> to navigate undo tree
 8. <F4> to navigate markdown preview, <ESC> to close
+9. <A-t> Toggle terminal
+10. <A-g> Toggle terminal with gitui
 -----
 
 # Potential Issues
