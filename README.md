@@ -13,7 +13,7 @@ Key mapping/ Common key usage until now:
 1. `<F5>` to navigate nvim tree (File explorer)
 2. `<A-h>/<A-j>/<A-k>/<A-l>` to navigate between window, nvim tree count as a window too
 3. `<C-q>/<C-e>` to navigate between buffer in bufferline (similar to tabs in vs code)
-4. Disable arrow key in normal mode and insert mode, use `<C-h>/<C-j>/<C-k>/<C-l>`to navigate in insertmode, use ctrl + wbx in insertmode to perform wbx
+4. Disable arrow key in normal mode and insert mode, use `<C-h>/<C-j>/<C-k>/<C-l>`to navigate in insert mode
 5. press a in normal mode to enter insert mode with cursor being after the current char
 6. space as leader key, space + fg/ff/fb/fh for telescope
 7. `<F6>` to navigate undo tree
