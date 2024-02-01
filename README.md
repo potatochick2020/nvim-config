@@ -24,12 +24,17 @@ sudo dpkg -i ripgrep_13.0.0_amd64.deb
 ## [Gitui](https://github.com/extrawurst/gitui/releases)
 [Binary Download Page](https://github.com/extrawurst/gitui/releases)
 ```
-cp ./theme.ron ~/.config/gitui/theme.ron
+cp ./gitui_theme.ron ~/.config/gitui/theme.ron
 ```
 
 ## Kitty 
-Install nerd font in terminal    
-
+```
+cp ./kitty_config.conf ~/.config/kitty/kitty.conf
+```
+## i3 
+```
+cp ./i3_config ~/.config/i3/config
+```
 
 -----
 Key mapping/ Common key usage until now:
