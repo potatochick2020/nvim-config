@@ -21,7 +21,7 @@ require('mini.sessions').setup({
   -- Whether to write current session before quitting Neovim
   autowrite = false,
   -- Directory where global sessions are stored (use `''` to disable)
-  directory =  'C:/Users/ryancheung/AppData/Local/nvim-data/sessions',
+  directory =  '',
   -- File for local session (use `''` to disable)
   file = 'Session.vim', -- 'Session.vim',
    -- Whether to force possibly harmful actions (meaning depends on function)

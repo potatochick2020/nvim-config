@@ -47,8 +47,8 @@ Key mapping/ Common key usage until now:
 6. space as leader key, space + fg/ff/fb/fh for telescope
 7. `<F6>` to navigate undo tree
 8. `<F4>` to navigate markdown preview, <ESC> to close
-9. `<A-t>` Toggle terminal
-10. `<A-g>` Toggle terminal with gitui
+9. `<S-t>` Toggle terminal
+10. `<S-g>` Toggle terminal with gitui
 -----
 
 # Potential Issues

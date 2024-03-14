@@ -1,14 +1,3 @@
-
-local window = package.config:sub(1,1) == '\\'
-if window then
-require'FTerm'.setup({
-	cmd = 'c:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe' 
-})
-else 
-require'FTerm'.setup()
-end
-
-
 vim.api.nvim_create_user_command('FTermOpen', require('FTerm').open, { bang = true })
 vim.api.nvim_create_user_command('FTermClose', require('FTerm').close, { bang = true })
 vim.api.nvim_create_user_command('FTermExit', require('FTerm').exit, { bang = true })

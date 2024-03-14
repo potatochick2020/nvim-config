@@ -1,7 +1,7 @@
 -- default config:
 require('glow').setup({
   glow_path = "", -- will be filled automatically with your glow bin in $PATH, if any
-  install_path = "C:/Users/ryancheung/.local/bin", -- default path for installing glow binary
+  install_path = "", -- default path for installing glow binary
   border = "shadow", -- floating window border config
   style = "dark",
 -- filled automatically with your current editor background, you can override using glow json style
