@@ -1,0 +1,23 @@
+backend ="glx";
+
+no-dock-shadow = true;
+
+frame-opacity = 0.8;
+
+inactive-opacity-override = false;
+
+corner-radius = 5;
+
+shadow-ignore-shaped = false;
+
+# Default opacity of active windows.
+active-opacity = 1.0;
+
+# Default opacity of inactive windows.
+inactive-opacity = 0.65;
+
+# Blur
+blur:
+{
+	strength = 2;
+}

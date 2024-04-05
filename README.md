@@ -29,13 +29,15 @@ cp ./gitui_theme.ron ~/.config/gitui/theme.ron
 
 ## Kitty 
 ```
-cp ./kitty_config.conf ~/.config/kitty/kitty.conf
+cp ./kitty ~/.config/kitty/kitty.conf
 ```
 ## i3 
 ```
-cp ./i3_config ~/.config/i3/config
+cp ./i3 ~/.config/i3/config
 ```
-
+## picom
+```
+cp ./picom ~/.config/picom/picom.conf
 -----
 Key mapping/ Common key usage until now:
 
