@@ -1,3 +1,6 @@
+--gruvbox color theme
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
 -- Set Tab to 4 space
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

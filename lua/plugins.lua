@@ -2,11 +2,11 @@ return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     -- color scheme
-    use ({ 'projekt0n/github-nvim-theme' }) 
+    use { "ellisonleao/gruvbox.nvim" }
     -- nvim-tree
     use {
          'kyazdani42/nvim-tree.lua',
-         requires = 'kyazdani42/nvim-web-devicons'
+         'kyazdani42/nvim-web-devicons',
     }
     -- bufferline 
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}

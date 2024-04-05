@@ -15,7 +15,7 @@ local gitui = fterm:new({
 })
 
 -- Use this to toggle gitui in a floating terminal
-vim.keymap.set('n', '<S-g>', function()
+vim.keymap.set('n', '<leader><S-g>', function()
     gitui:toggle()
 end)
 
