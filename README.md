@@ -38,6 +38,20 @@ cp ./i3 ~/.config/i3/config
 ## picom
 ```
 cp ./picom ~/.config/picom/picom.conf
+```
+
+# Other setting
+## Set a wallpaper
+```
+feh --bg-fill ~/wallpaper.png 
+```
+## To show nvim-tree icon properly, nerd-fonts are required
+```
+git clone --depth=1 https://github.com/ryanoasis/nerd-fonts
+cd nerd-fonts
+./install.sh Hack
+```
+
 -----
 Key mapping/ Common key usage until now:
 
