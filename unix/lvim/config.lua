@@ -36,10 +36,13 @@
 --command shortcut
 vim.cmd [[command! Qa :qa]]
 vim.cmd [[command! Q :q]]
+vim.cmd [[command! W :w]]
 vim.cmd [[command! Wq :wq]]
 vim.cmd [[command! WQ :wq]]
 vim.cmd [[command! ScriptRemoveAllEmptyLines :g/^$/d]]
 vim.cmd [[command! ScriptRemoveMultipleEmptyLines :g/^\_$\n\_^$/d]]
+vim.cmd [[command! ScriptChangeDirectoryToParentOfBuffer :cd %:h]]
+vim.cmd [[command! ConfigLvim :e ~/.config/lvim/config.lua]]
 -- NvimTree toggle to <F5>
 lvim.keys.normal_mode["<F5>"] = ":NvimTreeToggle<CR>"
 lvim.keys.insert_mode["<F5>"] = "<C-o>:NvimTreeToggle<CR>"
@@ -52,9 +55,12 @@ lvim.keys.insert_mode["<F6>"] = "<C-o>:UndotreeToggle<CR>"
 lvim.keys.normal_mode["<C-t>"] = ":ToggleTerm direction=float<CR>"
 lvim.keys.term_mode["<C-t>"] = "<C-\\><C-n><C-w>l"
 
--- Switch buffer
+-- Buffer
+lvim.keys.normal_mode["<S-Tab>"] = ":BufferLineMovePrev<CR>"
 lvim.keys.normal_mode["<S-q>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<S-w>"] = ":BufferKill<CR>"
 lvim.keys.normal_mode["<S-e>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-r>"] = ":BufferLineMoveNext<CR>"
 
 -- Marks
 lvim.keys.normal_mode["["] = "m["
@@ -62,7 +68,7 @@ lvim.keys.normal_mode["]"] = "m]"
 
 -- Telescope
 lvim.builtin.which_key.mappings["f"] = {
-    name = "Find",
+    name = "Telescope",
     f = { "<cmd>Telescope find_files<cr>", "Telescope find_files" },
     g = { "<cmd>Telescope live_grep<cr>", "Telescope live_grep" },
     s = { "<cmd>Telescope grep_string<cr>", "Telescope grep_string" },
@@ -79,7 +85,21 @@ lvim.builtin.which_key.mappings["f"] = {
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
 }
-
+-- Golang
+lvim.builtin.which_key.mappings["G"] = {
+    name = "Go lang",
+    tf = { ":GoTestFunc -F<cr>", "Go Test Function -F" },
+    tc = { ":GoTermClose<cr>", "Go Terminal Close" },
+}
+--[[
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function()
+        require('go.format').goimports()
+    end,
+    group = format_sync_grp,
+})
+--]]
 -- map redo
 lvim.keys.normal_mode["<C-u>"] = "<C-r>"
 
@@ -103,9 +123,7 @@ lvim.keys.insert_mode["<C-j>"] = "<C-o>j"
 
 -- auto close lvim
 lvim.plugins = {
-    -- Golang
-    "olexsmir/gopher.nvim",
-    "leoluz/nvim-dap-go",
+    { 'wakatime/vim-wakatime', lazy = false },
     {
         "phaazon/hop.nvim",
         event = "BufRead",
@@ -178,12 +196,112 @@ lvim.plugins = {
                 }
             }
         end
+    },
+    {
+        "ray-x/go.nvim",
+        dependencies = { -- optional packages
+            "ray-x/guihua.lua",
+            "neovim/nvim-lspconfig",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("go").setup({
+                run_in_floaterm = true,
+                floaterm = {               -- position
+                    posititon = 'right',   -- one of {`top`, `bottom`, `left`, `right`, `center`, `auto`}
+                    width = 0.45,          -- width of float window if not auto
+                    height = 0.98,         -- height of float window if not auto
+                    title_colors = 'nord', -- default to nord, one of {'nord', 'tokyo', 'dracula', 'rainbow', 'solarized ', 'monokai'}
+                    -- can also set to a list of colors to define colors to choose from
+                    -- e.g {'#D8DEE9', '#5E81AC', '#88C0D0', '#EBCB8B', '#A3BE8C', '#B48EAD'}
+                },
+            })
+        end,
+        event = { "CmdlineEnter" },
+        ft = { "go", 'gomod' },
+        build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    },
+    {
+        "Shatur/neovim-session-manager",
+        lazy = false,
+        config = function()
+            local present, session_manager = pcall(require, "session_manager")
+            if not present then
+                return
+            end
+
+            local path_present, Path = pcall(require, "plenary.path")
+            if not path_present then
+                return
+            end
+
+            local config = require('session_manager.config')
+
+            session_manager.setup({
+                sessions_dir = Path:new(vim.fn.stdpath('data'), 'sessions'), -- The directory where the session files will be saved.
+                path_replacer = '__',                                        -- The character to which the path separator will be replaced for session files.
+                colon_replacer = '++',                                       -- The character to which the colon symbol will be replaced for session files.
+                autoload_mode = { config.AutoloadMode.GitSession, config.AutoloadMode.CurrentDir },
+                --autoload_mode = require('session_manager.config').AutoloadMode., -- Define what to do when Neovim is started without arguments. Possible values: Disabled, CurrentDir, LastSession
+                autosave_ignore_not_normal = true, -- Plugin will not save a session when no buffers are opened, or all of them aren't writable or listed.
+                autosave_ignore_filetypes = {      -- All buffers of these file types will be closed before the session is saved.
+                    'gitcommit',
+                    'gitrebase',
+                },
+                autosave_only_in_session = false, -- Always autosaves session. If true, only autosaves after a session is active.
+                max_path_length = 80,             -- Shorten the display path if length exceeds this threshold. Use 0 if don't want to shorten the path at all.
+                autosave_last_session = true,
+            })
+
+            local config_group = vim.api.nvim_create_augroup('SessionManagerGroup', {})
+
+            vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+                callback = function()
+                    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                        -- Don't save while there's any 'nofile' buffer open.
+                        if vim.api.nvim_get_option_value("buftype", { buf = buf }) == 'nofile' then
+                            return
+                        end
+                    end
+                    session_manager.save_current_session()
+                end
+            })
+
+            vim.api.nvim_create_autocmd({ 'User' }, {
+                pattern = "SessionLoadPost",
+                group = config_group,
+                callback = function()
+                    require('nvim-tree.api').tree.toggle(false, true)
+                end,
+            })
+
+            vim.api.nvim_create_autocmd({ 'User' }, {
+                pattern = "SessionSavePost",
+                group = config_group,
+                callback = function()
+                    require('nvim-tree.api').tree.toggle(false, true)
+                end,
+            })
+        end,
+        keys = {
+            { "<Leader>ps", "<cmd>SessionManager available_commands<CR>",   desc = "session manager" },
+            { "<Leader>pS", "<cmd>SessionManager save_current_session<CR>", desc = "save session" },
+        },
+        -- Markdown Preview
+        {
+            "toppair/peek.nvim",
+            event = { "VeryLazy" },
+            build = "deno task --quiet build:fast",
+            config = function()
+                require("peek").setup()
+                vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+                vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+            end,
+        },
     }
 }
 
 -- #AUTO COMMAND
--- auto format on save
-lvim.format_on_save.enabled = true
 -- nvim tree auto close
 local function is_modified_buffer_open(buffers)
     for _, v in pairs(buffers) do
@@ -256,99 +374,7 @@ vim.wo.wrap = true
 vim.o.whichwrap = 'b,s,<,>,[,],h,l'
 -- search during typing
 vim.o.incsearch = true
--- #Go lang
-------------------------
--- Treesitter
-------------------------
-lvim.builtin.treesitter.ensure_installed = {
-    "go",
-    "gomod",
-}
+-- auto format on save
+lvim.format_on_save.enabled = true
 
-------------------------
--- Formatting
-------------------------
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
-    { command = "goimports", filetypes = { "go" } },
-    { command = "gofumpt",   filetypes = { "go" } },
-}
-
-lvim.format_on_save = {
-    pattern = { "*.go" },
-}
-
-------------------------
--- Dap
-------------------------
-local dap_ok, dapgo = pcall(require, "dap-go")
-if not dap_ok then
-    return
-end
-
-dapgo.setup()
-
-------------------------
--- LSP
-------------------------
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
-
-local lsp_manager = require "lvim.lsp.manager"
-lsp_manager.setup("golangci_lint_ls", {
-    on_init = require("lvim.lsp").common_on_init,
-    capabilities = require("lvim.lsp").common_capabilities(),
-})
-
-lsp_manager.setup("gopls", {
-    on_attach = function(client, bufnr)
-        require("lvim.lsp").common_on_attach(client, bufnr)
-        local _, _ = pcall(vim.lsp.codelens.refresh)
-        local map = function(mode, lhs, rhs, desc)
-            if desc then
-                desc = desc
-            end
-
-            vim.keymap.set(mode, lhs, rhs, { silent = true, desc = desc, buffer = bufnr, noremap = true })
-        end
-        map("n", "<leader>Ci", "<cmd>GoInstallDeps<Cr>", "Install Go Dependencies")
-        map("n", "<leader>Ct", "<cmd>GoMod tidy<cr>", "Tidy")
-        map("n", "<leader>Ca", "<cmd>GoTestAdd<Cr>", "Add Test")
-        map("n", "<leader>CA", "<cmd>GoTestsAll<Cr>", "Add All Tests")
-        map("n", "<leader>Ce", "<cmd>GoTestsExp<Cr>", "Add Exported Tests")
-        map("n", "<leader>Cg", "<cmd>GoGenerate<Cr>", "Go Generate")
-        map("n", "<leader>Cf", "<cmd>GoGenerate %<Cr>", "Go Generate File")
-        map("n", "<leader>Cc", "<cmd>GoCmt<Cr>", "Generate Comment")
-        map("n", "<leader>DT", "<cmd>lua require('dap-go').debug_test()<cr>", "Debug Test")
-    end,
-    on_init = require("lvim.lsp").common_on_init,
-    capabilities = require("lvim.lsp").common_capabilities(),
-    settings = {
-        gopls = {
-            usePlaceholders = true,
-            gofumpt = true,
-            codelenses = {
-                generate = false,
-                gc_details = true,
-                test = true,
-                tidy = true,
-            },
-        },
-    },
-})
-
-local status_ok, gopher = pcall(require, "gopher")
-if not status_ok then
-    return
-end
-
-gopher.setup {
-    commands = {
-        go = "go",
-        gomodifytags = "gomodifytags",
-        gotests = "gotests",
-        impl = "impl",
-        iferr = "iferr",
-    },
-}
--- # Install in first boot
---:MasonInstall gopls golangci-lint-langserver delve goimports gofumpt gomodifytags gotests impl
+local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
